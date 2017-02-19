@@ -8,6 +8,11 @@ import {MaterialModule} from '@angular/material';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import 'hammerjs';
 
+// SERVICES
+import {DataService} from './data/data.service';
+import {ConfigService} from './config/config.service';
+import {AuthgaurdService} from './authgaurd/authgaurd.service';
+import {AuthService} from './auth/auth.service';
 // PAGES
 import { AppComponent } from './app.component';
 import {Home} from './home/home';
@@ -15,9 +20,7 @@ import {Page1Component} from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-// SERVICES
-import {DataService} from './data/data.service';
-import {ConfigService} from './config/config.service';
+import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import {ConfigService} from './config/config.service';
     Page1Component,
     Page2Component,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import {ConfigService} from './config/config.service';
     MaterialModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig)
   ],
-  providers   : [ DataService, ConfigService,
+  providers   : [ DataService, ConfigService, AuthgaurdService, AuthService,
    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy}, {	provide: 'windowObject', useValue: window }],

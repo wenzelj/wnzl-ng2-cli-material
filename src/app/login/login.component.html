@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<md-card class="app-input-section">
+  <form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()">
+    <md-input placeholder="User name"></md-input>
+    <md-input #username placeholder="User Name" maxlength="50">
+      <md-hint align="end">
+        {{username.characterCount}} / 50
+      </md-hint>
+    </md-input>
+
+    <md-input placeholder="Password"></md-input>
+    <md-input #password placeholder="Password" itemtype="password">
+    </md-input>
+    <button md-raised-button type="submit">Submit</button>
+  </form>
+</md-card>

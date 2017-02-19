@@ -6,6 +6,7 @@ export class ConfigService {
     private _config: Object;
     private _env: Object;
     apiUrl: string;
+    protectedApiUrl : string;
     analyticsUrl: string;
     advertUrl: string;
     protectedAdvertUrl: string;
@@ -14,6 +15,8 @@ export class ConfigService {
 
     constructor() {
       this.apiUrl = 'http://ckgapi.azurewebsites.net/api/';
+      this.protectedApiUrl = this.apiUrl + 'protected/';
+
       this.advertUrl = this.apiUrl + 'advert/';
       this.analyticsUrl = this.apiUrl + 'analytics/';
       this.protectedAdvertUrl = this.apiUrl + 'protected/advert/';

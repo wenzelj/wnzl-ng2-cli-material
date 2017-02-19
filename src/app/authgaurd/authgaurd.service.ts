@@ -11,7 +11,7 @@ export class AuthgaurdService implements CanActivate {
     if (this.authService.loggedIn()) {
       return true;
     } else {
-      this.router.navigateByUrl('/unauthorized');
+      this.router.navigateByUrl('/login');
       return false;
     }
   }

@@ -14,9 +14,13 @@ interface Credentials {
 })
 export class LoginComponent {
   credentials: Credentials;
+  username: String;
+  password: String;
+
   constructor(private dataService: DataService) { }
 
-  onLogin(credentials){
-    this.dataService.login(credentials);
+  onLogin(event, username, password) {
+    event.preventDefault();
+    this.dataService.login(username, password);
   }
 }

@@ -1,12 +1,12 @@
 <md-card class="app-input-section">
 
-  <form #f="ngForm" (ngSubmit)="onLogin(f.value)" >
-    <md-input #username >
+  <form #f="ngForm" (ngSubmit)="onLogin($event, username.value, password.value)" >
+    <md-input id="username" #username >
         <md-placeholder>
           <i class="material-icons app-input-icon">face</i> User Name
         </md-placeholder>
     </md-input>
-    <md-input #password type="password">
+    <md-input id="password" #password type="password">
          <md-placeholder>
           <i class="material-icons app-input-icon">lock</i> Password
         </md-placeholder>

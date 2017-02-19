@@ -9,7 +9,7 @@ export class AuthService {
   constructor() { }
 
   loggedIn() {
-    return tokenNotExpired();
+    return tokenNotExpired('jwt', localStorage.getItem('jwt'));
   }
 
 }

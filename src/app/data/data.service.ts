@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 export class DataService {
   constructor(public router: Router, public http: Http, public config: ConfigService, private authHttp: AuthHttp) { }
 
-  login(body) {
+  login(username, password) {
+    let body = JSON.stringify({ username, password });
     this.http.post(this.config.loginUrl, body, { headers: this.config.contentHeaders })
       .subscribe(
       response => {

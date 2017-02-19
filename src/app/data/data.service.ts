@@ -29,6 +29,7 @@ export class DataService {
   }
 
     getSecureStuff(stuffUrl) {
+
     return this.authHttp.get(this.config.protectedApiUrl + stuffUrl)
       .map(res => res.json());
       // .subscribe(

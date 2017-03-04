@@ -10,12 +10,6 @@ export class Page2Component implements OnInit {
 
   constructor(public dataService: DataService) { }
 
-  login(event, username, password) {
-    event.preventDefault();
-    let body = JSON.stringify({ username, password });
-    this.dataService.login(body);
-  }
-
   ngOnInit() {
   }
 

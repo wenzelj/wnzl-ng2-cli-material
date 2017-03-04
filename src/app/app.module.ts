@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
-function authHttpServiceFactory(http: Http, options: RequestOptions) {
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
 }
 

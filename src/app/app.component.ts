@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DataService} from './data/data.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(public dataService: DataService, public authService: AuthService) { 
+
+  }
+
   title = 'app works!';
+
 }

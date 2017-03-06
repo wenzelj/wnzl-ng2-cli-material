@@ -9,12 +9,14 @@ import 'rxjs/add/operator/map';
 export class DataService {
   constructor(public router: Router, public http: Http, public config: ConfigService, private authHttp: AuthHttp) { }
 
+  public jwtKey: string = 'jwt';
+
   login(username, password) {
     let body = JSON.stringify({ username, password });
     this.http.post(this.config.loginUrl, body, { headers: this.config.contentHeaders })
       .subscribe(
       response => {
-        localStorage.setItem('jwt', response.json().id_token);
+        localStorage.setItem(this.jwtKey , response.json().id_token);
         this.router.navigateByUrl('/');
       },
       error => {

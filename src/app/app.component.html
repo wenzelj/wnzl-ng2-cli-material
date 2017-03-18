@@ -2,9 +2,9 @@
 <md-sidenav-layout fullscreen [class.m2app-dark]="isDarkTheme">
   <md-sidenav #sidenav mode="side" class="app-sidenav">
    
-	<div [routerLinkActive]="['active']"><button md-raised-button color="primary" [routerLink]="['/home']"><md-icon>home</md-icon> Home</button></div>	
-  <div [routerLinkActive]="['active']"><button md-raised-button color="primary" [routerLink]="['/page1']">Material</button></div>	
-  <div [routerLinkActive]="['active']"><button md-raised-button color="primary" [routerLink]="['/page2']">Data</button></div>	
+	<div [routerLinkActive]="['active']"><button md-button [routerLink]="['/home']"><md-icon>home</md-icon> Home</button></div>	
+  <div [routerLinkActive]="['active']"><button md-button [routerLink]="['/page1']"><md-icon>settings</md-icon> Material</button></div>	
+  <div [routerLinkActive]="['active']"><button md-button [routerLink]="['/page2']"><md-icon>card_giftcard</md-icon> Data</button></div>	
   </md-sidenav>
   
   <md-toolbar color="primary">

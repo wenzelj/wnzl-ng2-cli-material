@@ -31,6 +31,23 @@ export class DataService {
     this.router.navigateByUrl('/login');
   }
 
+  //Error logging 
+    log(error) {
+    let body = JSON.stringify(error.message);
+    this.http.post(this.config.logUrl, body, { headers: this.config.contentHeaders })
+      .subscribe(
+      response => {
+        
+      },
+      error => {
+        console.log(error.text());
+      }
+      );
+  }
+
+
+
+
     getSecureStuff(stuffUrl) {
 
     return this.authHttp.get(this.config.protectedApiUrl + stuffUrl)

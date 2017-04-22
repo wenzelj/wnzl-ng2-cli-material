@@ -11,11 +11,13 @@ export class ConfigService {
     advertUrl: string;
     protectedAdvertUrl: string;
     loginUrl: string;
+    logUrl:string;
     contentHeaders: Headers;
 
     constructor() {
       this.apiUrl = 'http://ckgapi.azurewebsites.net/api/';
       this.protectedApiUrl = this.apiUrl + 'protected/';
+      this.logUrl = this.apiUrl + 'log/';
 
       this.advertUrl = this.apiUrl + 'advert/';
       this.analyticsUrl = this.apiUrl + 'analytics/';

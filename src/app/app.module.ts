@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, ErrorHandler} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { HttpModule } from '@angular/http';
@@ -23,6 +23,7 @@ import { Page2Component } from './page2/page2.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { MyErrorHandler } from './error/errorHandler';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -50,6 +51,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ConfigService,
     AuthgaurdService,
     AuthService,
+    MyErrorHandler,
+    {provide: ErrorHandler, useClass: MyErrorHandler},
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

@@ -10,6 +10,7 @@ export class Page1Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    throw "oops";
   }
 
 }

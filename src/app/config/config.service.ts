@@ -13,9 +13,10 @@ export class ConfigService {
     loginUrl: string;
     logUrl:string;
     contentHeaders: Headers;
+    enableLogging : boolean;
 
     constructor() {
-      this.apiUrl = 'http://ckgapi.azurewebsites.net/api/';
+      this.apiUrl = 'http://localhost:3001/api/';
       this.protectedApiUrl = this.apiUrl + 'protected/';
       this.logUrl = this.apiUrl + 'log/';
 
@@ -26,6 +27,7 @@ export class ConfigService {
       this.contentHeaders = new Headers();
       this.contentHeaders.append('Accept', 'application/json');
       this.contentHeaders.append('Content-Type', 'application/json');
+      this.enableLogging = true;
     }
 
 }

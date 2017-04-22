@@ -33,16 +33,29 @@ export class DataService {
 
   //Error logging 
     log(error) {
-    let body = JSON.stringify(error.message);
-    this.http.post(this.config.logUrl, body, { headers: this.config.contentHeaders })
-      .subscribe(
-      response => {
-        
-      },
-      error => {
-        console.log(error.text());
+      if(this.config.enableLogging){
+        var date = new Date();
+        var partitionKey = date.getDate() + "-" + (date.getMonth() + 1) + "-"  + date.getFullYear();
+        var rowKey = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        let body = {
+          "tableName": "errorLogs",
+            "partitionKey": partitionKey.toString(),
+            "rowKey": rowKey.toString(),
+            "data":{
+                "error": JSON.stringify(error.message)
+                }
+          }
+
+        this.http.post(this.config.logUrl, body, { headers: this.config.contentHeaders })
+          .subscribe(
+          response => {
+            
+          },
+          error => {
+            console.log(error.text());
+          }
+          );
       }
-      );
   }
 
 

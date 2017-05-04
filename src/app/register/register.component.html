@@ -1,0 +1,24 @@
+<md-card>
+    <h1><md-icon>account_circle</md-icon>Register</h1>
+</md-card>
+
+<md-card class="app-input-section">
+  <form #f="ngForm" (ngSubmit)="onRegister($event, username.value, name.value, password.value)" >
+    <md-input id="username" #username type="email" required >
+        <md-placeholder>
+          <i class="material-icons app-input-icon">face</i> User Name
+        </md-placeholder>
+    </md-input>
+    <md-input id="name" #name required >
+        <md-placeholder>
+          <i class="material-icons app-input-icon">face</i> First Name
+        </md-placeholder>
+    </md-input>
+    <md-input id="password" #password type="password" required>
+         <md-placeholder>
+          <i class="material-icons app-input-icon">star</i> Password
+        </md-placeholder>
+    </md-input>
+    <button md-raised-button type="submit"><i class="material-icons app-input-icon">lock</i> Submit</button>
+  </form>
+</md-card>

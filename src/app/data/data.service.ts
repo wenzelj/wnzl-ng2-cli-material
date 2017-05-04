@@ -5,24 +5,57 @@ import { ConfigService } from '../config/config.service';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
+class TableItem {
+    tableName: string;
+    partitionKey:string;
+    rowKey:string;
+    data: any;
+    constructor(tableName: string, partitionKey: string, rowkey: string, data: any) {
+        this.tableName = tableName;
+        this.partitionKey = partitionKey;
+        this.rowKey = rowkey;
+        this.data = data;
+    }
+}
+
 @Injectable()
 export class DataService {
   constructor(public router: Router, public http: Http, public config: ConfigService, private authHttp: AuthHttp) { }
 
   public jwtKey: string = 'jwt';
 
-  login(username, password) {
-    let body = JSON.stringify({ username, password });
+  handleError(error){
+      alert(error.text());  
+      console.log(error.text())
+  }
+
+
+  register(userName, name, password){
+    let data = {"password": password};
+    let user = new TableItem('usersAuth', userName, name, data );   
+
+    let body = JSON.stringify(user);
+    this.http.post(this.config.registerUrl, body, { headers: this.config.contentHeaders })
+      .subscribe(
+      response => {
+        localStorage.setItem(this.jwtKey , response.json().id_token);
+        this.router.navigateByUrl('/');
+      },
+      error => this.handleError
+      );
+  }
+
+  login(userName, password) {
+    let data = {"password": password};
+    let tableItem = new TableItem('usersAuth', userName, '', data );
+    let body = JSON.stringify(tableItem);
     this.http.post(this.config.loginUrl, body, { headers: this.config.contentHeaders })
       .subscribe(
       response => {
         localStorage.setItem(this.jwtKey , response.json().id_token);
         this.router.navigateByUrl('/');
       },
-      error => {
-        alert(error.text());
-        console.log(error.text());
-      }
+      error => this.handleError
       );
   }
 
@@ -51,9 +84,7 @@ export class DataService {
           response => {
             
           },
-          error => {
-            console.log(error.text());
-          }
+          error => this.handleError
           );
       }
   }

@@ -12,6 +12,7 @@ export class ConfigService {
     protectedAdvertUrl: string;
     loginUrl: string;
     logUrl:string;
+    registerUrl:string;
     contentHeaders: Headers;
     enableLogging : boolean;
 
@@ -23,7 +24,8 @@ export class ConfigService {
       this.advertUrl = this.apiUrl + 'advert/';
       this.analyticsUrl = this.apiUrl + 'analytics/';
       this.protectedAdvertUrl = this.apiUrl + 'protected/advert/';
-      this.loginUrl = 'http://ckgapi.azurewebsites.net/sessions/create';
+      this.loginUrl = this.apiUrl + 'sessions/create';
+      this.registerUrl = this.apiUrl + 'register' 
       this.contentHeaders = new Headers();
       this.contentHeaders.append('Accept', 'application/json');
       this.contentHeaders.append('Content-Type', 'application/json');
